@@ -30,21 +30,33 @@ def is_palindrome(n):
     if palindrom == n_copy:
         return True
     return False
+def is_antipalindrome(n):
+    """
+    Este o functie care stabileste daca un numer este sau nu antipalindrom
+    return:  true daca elementul este anipalindrom si false daca nu
 
+    """
+    if n == n[::-1]:
+        return False
+    return True
 
+def test_is_antipalindrome():
+    assert is_antipalindrome("12721") is False
+    assert is_antipalindrome("14842394") is True
+    assert is_antipalindrome("26") is False
 
 
 
 def test_get_largest_prime_below():
     assert (get_largest_prime_below(39) == 37)
-    assert (get_largest_prime_below(12) == 11)
+    assert (get_largest_prime_below(14) == 13)
     assert (get_largest_prime_below(121) == 113)
 
 
 def test_is_palidrom():
-    assert (is_palindrome(33) == True)
-    assert (is_palindrome(121) == True)
-    assert (is_palindrome(12) == False)
+    assert (is_palindrome(333) == True)
+    assert (is_palindrome(12121) == True)
+    assert (is_palindrome(127) == False)
 
 
 def main():
@@ -52,8 +64,9 @@ def main():
     test_is_palidrom()
     while True:
         print(" 1. Afisati cel mai mare numar prim mai mic decat x. ")
-        print(" 2. Verifica daca x este palindrom ")
-        print(" 3. Exit")
+        print(" 2. Verifica daca x este palindrom. ")
+        print (" 3. Verifica daca n este antipalindrom. ")
+        print(" x. Exit")
         option = input("Optiunea voastra: ")
         if option == "1":
             number = input("Introduceti valoarea lui x: ")
@@ -62,6 +75,9 @@ def main():
             number = int(input("Introduceti valoarea lui x: "))
             print(is_palindrome(int(number)))
         elif option == "3":
+            n = input("introduceeti numarul: ")
+            print("Rezultatul: ", is_antipalindrome(n))
+        elif option =="x":
             break
         else:
             print("Valoarea introdusa nu este corecta!")
